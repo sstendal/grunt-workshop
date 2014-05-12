@@ -15,23 +15,11 @@ module.exports = function(grunt) {
 					cwd: 'src/',
 					dest: 'dist/',
 					src: [
-						'*.html',
-						'styles/*.css'
+						'*.html'
 					]
 				}]
 			}
 		},
-
-	  uglify: {
-	    dist: {
-				files: [{
-          expand: true,
-          cwd: 'src/scripts',
-          dest: 'dist/scripts',
-          src: '*.js'
-      	}]	    
-      }
-	  },
 
 		clean: {
 			dist: {
@@ -77,8 +65,15 @@ module.exports = function(grunt) {
 					'jquery.js': 'jquery/dist/jquery.js'
 				}
 			}
-		}		
+		},
 
+		useminPrepare: {
+ 			html: 'src/index.html'
+		},
+
+		usemin: {
+ 			html: 'dist/index.html'
+		}		
 
 	});
 
@@ -90,7 +85,11 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('build', [
 		'copy',
-		'uglify'
+		'useminPrepare',
+		'concat',
+		'uglify',
+		'cssmin',
+		'usemin'
 		])
 
 	grunt.registerTask('default', [
