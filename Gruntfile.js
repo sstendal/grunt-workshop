@@ -48,18 +48,42 @@ module.exports = function(grunt) {
 					port: 9000,
 					base: 'dist',
 					hostname: 'localhost',
-					keepalive: true,
+					livereload: 35729,
 					open: true
 				}
 			}
-		}
+		},
+
+		watch: {
+			dist: {
+				files: [
+					'src/**/*.html',
+					'src/**/*.js',
+					'src/**/*.css'
+					],
+				tasks: ['build'],
+				options: {
+					livereload: true
+				}
+			}
+		}		
 
 	});
 
-	grunt.registerTask('default', [
-		'clean',
+	grunt.registerTask('serve', [
+		'build',
+		'connect',
+		'watch'
+		]);
+
+	grunt.registerTask('build', [
 		'copy',
 		'uglify'
+		])
+
+	grunt.registerTask('default', [
+		'clean',
+		'build'
 		]);
 
 };
