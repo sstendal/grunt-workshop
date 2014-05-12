@@ -28,7 +28,7 @@ Kjør Bower for å hente ned jquery
 
 	grunt bowercopy
 
-JQuery blir lastet ned og lagt under src/scripts og kan sjekkes inn i prosjektet.
+Hele JQuery-distribusjonen blir lastet ned til bower_components. Deretter blir jquery.js kopier til src/scripts og kan sjekkes inn i prosjektet. 
 
 Start webserveren for å teste
 
