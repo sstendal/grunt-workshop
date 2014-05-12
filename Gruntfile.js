@@ -40,11 +40,24 @@ module.exports = function(grunt) {
 					src: ['dist']
 				}]
 			}
+		},
+
+		connect: {
+			dist: {
+				options: {
+					port: 9000,
+					base: 'dist',
+					hostname: 'localhost',
+					keepalive: true,
+					open: true
+				}
+			}
 		}
 
 	});
 
 	grunt.registerTask('default', [
+		'clean',
 		'copy',
 		'uglify'
 		]);
