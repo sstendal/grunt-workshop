@@ -24,10 +24,13 @@ module.exports = function(grunt) {
 
 	  uglify: {
 	    dist: {
-	      files: {
-	        'dist/scripts/app.js': ['src/scripts/app.js']
-	      }
-	    }
+				files: [{
+          expand: true,
+          cwd: 'src/scripts',
+          dest: 'dist/scripts',
+          src: '*.js'
+      	}]	    
+      }
 	  },
 
 		clean: {
