@@ -39,6 +39,16 @@ module.exports = function(grunt) {
 					livereload: 35729,
 					open: true
 				}
+			},
+
+			src: {
+				options: {
+					port: 9000,
+					base: 'src',
+					hostname: 'localhost',
+					livereload: 35729,
+					open: true
+				}
 			}
 		},
 
@@ -77,11 +87,26 @@ module.exports = function(grunt) {
 
 	});
 
-	grunt.registerTask('serve', [
-		'build',
-		'connect',
-		'watch'
-		]);
+	// Starts webserver and reloads browser when something changes
+  grunt.registerTask('serve', function(target) {
+
+		var tasks;
+		if(target === 'dist') {
+			tasks = [
+				'build',
+				'connect:dist',
+				'watch'
+				];
+		} else {
+			tasks = [
+				'build',
+				'connect:src',
+				'watch'
+				];
+		}
+
+		grunt.task.run(tasks);
+	});
 
 	grunt.registerTask('build', [
 		'copy',
