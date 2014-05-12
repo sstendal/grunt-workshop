@@ -66,7 +66,19 @@ module.exports = function(grunt) {
 					livereload: true
 				}
 			}
+		},
+
+		bowercopy: {
+			libs: {
+				options: {
+          destPrefix: 'src/scripts'
+        },
+				files: {
+					'jquery.js': 'jquery/dist/jquery.js'
+				}
+			}
 		}		
+
 
 	});
 
