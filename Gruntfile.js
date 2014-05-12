@@ -28,7 +28,16 @@ module.exports = function(grunt) {
 	        'dist/scripts/app.js': ['src/scripts/app.js']
 	      }
 	    }
-	  }
+	  },
+
+		clean: {
+			dist: {
+				files: [{
+					dot: true,
+					src: ['dist']
+				}]
+			}
+		}
 
 	});
 
